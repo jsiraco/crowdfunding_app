@@ -13,6 +13,15 @@ router.get("/", async (req, res) => {
                 },
             ],
         });
+
+        const projects = projectData.map((project) => {
+            project.get({ plain: true });
+        });
+
+        res.render("homepage", {
+            projects,
+            // user.id here?
+        })
     } catch (err) {
         res.status(400).json(err);
     }
